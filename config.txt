@@ -1,0 +1,13 @@
+description "Echo Demon"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+respawn
+respawn limit 5 60
+
+script
+ exec python3 /root/avito/maim.py
+end script
+
+post-stop exec sleep 5
