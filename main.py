@@ -14,7 +14,6 @@ vip = []
 obv_sql = []
 
 
-# start_time = datetime.now()
 class ParseMode(object):
     HTML = 'HTML'
     """:obj:'str': 'HTML """
