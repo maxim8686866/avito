@@ -5,8 +5,16 @@ After=network.target
 [Service]
 User=root
 Group=root
+<<<<<<< HEAD
 WorkingDirectory=/home/avito
 ExecStart=python3.6 main.py
 
 [Install]
 WantedBy=multi-user.target
+=======
+WorkingDirectory=/root/avito
+ExecStart=/usr/bin/python3.6 /root/avito/main.py
+
+[Install]
+WantedBy=multi-user.target
+>>>>>>> 8712a24e4934b3eac55c291d8fe3ae2ab3c5c0bd
