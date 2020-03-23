@@ -1,13 +1,12 @@
-description "Echo Demon"
+[Unit]
+Description=Telegram Bot daemon
+After=network.target
 
-start on runlevel [2345]
-stop on runlevel [!2345]
+[Service]
+User=root
+Group=root
+WorkingDirectory=/home/avito
+ExecStart=python3.6 main.py
 
-respawn
-respawn limit 5 60
-
-script
- exec python3 /root/avito/maim.py
-end script
-
-post-stop exec sleep 5
+[Install]
+WantedBy=multi-user.target
