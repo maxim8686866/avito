@@ -20,16 +20,19 @@ class ParseMode(object):
 
 # отправка сообщений
 def send_message(text):
+    # chat_id = [325363221, 373143746]
+
     bot = Bot(
         token='1073700436:AAGRNtbf2_gW7W5WxehQn8uVUVRzqW1UGKI',
         base_url='https://telegg.ru/orig/bot',
     )
-    bot.send_message(
-        chat_id=325363221,
-        text=text,
-        parse_mode=ParseMode.HTML,
-        disable_web_page_preview=True,
-    )
+    for user_id in (325363221, 373143746):
+        bot.send_message(
+            chat_id=user_id,
+            text=text,
+            parse_mode=ParseMode.HTML,
+            disable_web_page_preview=True,
+        )
 
 # соедение с таблицей
 def connect():
@@ -66,7 +69,10 @@ def procmotr(hrefs):
 
     for x in see:
         sees.append(x.text)
-    return sees[0][17::]
+    try:
+        return sees[0][17::]
+    except:
+        return 'N'
 
 # создание файла
 def file():
@@ -80,7 +86,10 @@ def telefon(hrefs):
     chrome_options.add_argument('--headless')
     driver = webdriver.Chrome(options=chrome_options)
     driver.get(hrefs)
-    driver.find_element_by_partial_link_text('8 9').click()
+    try:
+        driver.find_element_by_partial_link_text('8 9').click()
+    except:
+        return "Не удалось скопировать номер"
     time.sleep(3)
     try:
         driver.find_element_by_xpath('/html/body/div[11]/div/div/div/div/div[1]').screenshot(file())
@@ -128,10 +137,10 @@ def osnova():
                        hrefs,)
                 cursor.execute(sql, var)
                 db.commit()
-                # if city == 'Москва':
-                send_message(
-                    f'<i>{city}</i> {kv[0]} {price[0]} <a href="{hrefs}">ссылка</a> {procmotr(hrefs)} {telefon(hrefs)}')
-                count_1 += 1
+                if city == 'Москва':
+                    send_message(
+                        f'<i>{city}</i> {kv[0]} {price[0]} <a href="{hrefs}">home</a> {procmotr(hrefs)} {telefon(hrefs)}')
+                    count_1 += 1
     if count_1 > 0:
         print('Добавилось ' + str(count_1) + ' объявлений по МСК')
     if count > 0:
