@@ -20,13 +20,13 @@ class ParseMode(object):
 
 # отправка сообщений
 def send_message(text):
-    # chat_id = [325363221, 373143746]
+    chat_id = []
 
     bot = Bot(
         token='1073700436:AAGRNtbf2_gW7W5WxehQn8uVUVRzqW1UGKI',
         base_url='https://telegg.ru/orig/bot',
     )
-    for user_id in (325363221, 373143746):
+    for user_id in chat_id:
         bot.send_message(
             chat_id=user_id,
             text=text,
@@ -37,9 +37,9 @@ def send_message(text):
 # соедение с таблицей
 def connect():
     db = mysql.connector.connect(
-        host="127.0.0.1",
-        user="rooter",
-        passwd="17721338",
+        host="0.0.0.0",
+        user="-",
+        passwd="-",
         port="3306",
         database="aviator",
         charset='utf8'
