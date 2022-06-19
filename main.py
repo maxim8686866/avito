@@ -23,7 +23,7 @@ def send_message(text):
     chat_id = []
 
     bot = Bot(
-        token='1073700436:AAGRNtbf2_gW7W5WxehQn8uVUVRzqW1UGKI',
+        token='-',
         base_url='https://telegg.ru/orig/bot',
     )
     for user_id in chat_id:
